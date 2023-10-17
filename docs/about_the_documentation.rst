@@ -1,4 +1,0 @@
-About the documentation
-==================
-
-TODO
