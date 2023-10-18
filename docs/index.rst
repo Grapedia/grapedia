@@ -6,20 +6,24 @@
 Welcome to Grapedia's documentation!
 ====================================
 
-Grapedia is a community driven effort to integrate knowledge, resources and services for the grape scientific community and industry.
+Grapedia is a community driven effort to *integrate* knowledge, resources and services for the grape scientific *community* and *industry*. The objective of this documentation is to offer comprehensive *technical guidance* for both *users* and *developers* within the *community*.
 
 
 .. note::
 
-   This is a note
+   Follow `@Grapediaportal <https://twitter.com/Grapediaportal>`_ on Twitter (X) or `visit our website <https://grapedia.org/>`_.`
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   get_involved
+   graphql_api
    workflows
    guidelines
+   for_developers
+   
 
 
 Indices and tables
