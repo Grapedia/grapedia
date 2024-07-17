@@ -129,3 +129,54 @@ In the workflows/genes_annotation-workflow folder, you can create a "data" folde
 
 Launch the pipeline
 ^^^^^^^^^^^^^^^^^^^
+
+Before launching the pipeline, fill in the configuration file called “nextflow.config” in the “workflows/genes_annotation-workflow” folder.
+
+  nextflow.config file
+
+.. code-block:: bash
+
+  manifest {
+    author = 'Amandine Velt'
+    name = 'Annotation pipeline'
+    version = '1.0'
+    description = 'Annotation pipeline'
+  }
+  
+  docker {
+    enabled = true
+  }
+  
+  process {
+    cpus = 20
+    memory = 20.GB
+  }
+  
+  params {
+    assemblies_folder = "$projectDir/data/assemblies/"
+    previous_assembly = "PN40024_40X_REF_chloro_mito.chr_renamed.fasta"
+    new_assembly = "Chinese_ref_v2.fa"
+    annotations_folder = "$projectDir/data/annotations/"
+    previous_annotations = "PN40024_pseudomolecules.v4.3.BETA.gff3"
+    RNAseq_samplesheet = "$projectDir/data/RNAseq_data/samplesheet.test.csv"
+    protein_samplesheet = "$projectDir/data/protein_data/samplesheet.csv"
+    geneid_param_file = "$projectDir/data/geneid_param_file/vvinifera.param.Jan_12_2007"
+    pasa_config_file = "$projectDir/data/pasa_config_file/pasa.alignAssembly.Template.txt"
+    evm_config_file = "$projectDir/data/evidencemodeler_weights_file/weights.txt"
+    NR_proteins_fasta = "$projectDir/data/protein_data/for_abinitio_gene_models_selection/nr.fasta"
+    uniprot_fasta = "$projectDir/data/protein_data/for_abinitio_gene_models_selection/uniprot_sprot.fasta"
+  }
+
+.. note::
+
+  The $projectDir variable is the absolute path to the "workflows/genes_annotation-workflow" folder. If you have correctly followed the folders/files structure creation that is mandatory and suggested in the data preparation section, you only need to modify the file names and not the paths to these files.
+
+Once the data has been correctly prepared and the configuration file completed, simply launch the Nextflow pipeline directly in the workflows/genes_annotation-workflow folder.
+
+.. code-block:: bash
+
+  nextflow run main.nf
+
+.. note::
+
+  To launch the pipeline, Nextflow must be installed on your computer/server following these `instructions <https://www.nextflow.io/docs/latest/install.html>`_
