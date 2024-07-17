@@ -4,6 +4,10 @@ Workflows
 **TITAN** (**T**\ he **I**\ ntensive **T**\ ranscript **AN**\ notation pipeline)
 --------------------------------------------------------------------------------
 
+.. image:: _static/logo_titan.jpg
+  :width: 450
+  :align: center
+
 Installation
 ^^^^^^^^^^^^
 
