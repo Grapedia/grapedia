@@ -28,7 +28,9 @@ The pipeline only requires docker to be installed. All the tools used by the pip
 
   To install Docker, follow the instructions `here <https://docs.docker.com/get-docker/>`_ for Docker desktop (Mac/Windows/Linux), or if you are on Linux you can install also Docker engine, following the instructions `here <https://docs.docker.com/engine/install/>`_
 
-With the workflows/genes_annotation-workflow and docker installed, you can simply run the TITAN pipeline after data preparation (see next section).
+Also, to launch the pipeline, Nextflow must be installed on your computer/server following these `instructions <https://www.nextflow.io/docs/latest/install.html>`_
+
+With the workflows/genes_annotation-workflow, Nextflow and docker installed, you can simply run the TITAN pipeline after data preparation (see next section).
 
 Data preparation
 ^^^^^^^^^^^^^^^^
@@ -180,7 +182,3 @@ Once the data has been correctly prepared and the configuration file completed, 
 .. code-block:: bash
 
   nextflow run main.nf
-
-.. note::
-
-  To launch the pipeline, Nextflow must be installed on your computer/server following these `instructions <https://www.nextflow.io/docs/latest/install.html>`_
