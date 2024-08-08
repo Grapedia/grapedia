@@ -127,3 +127,10 @@ Once the data has been correctly prepared and the configuration file completed, 
 .. code-block:: bash
 
   nextflow run main.nf
+
+TITAN workflow
+^^^^^^^^^^^^^^^^^^^
+
+.. image:: _static/workflow_titan.png
+  :width: 450
+  :align: center
