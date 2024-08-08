@@ -132,5 +132,5 @@ TITAN workflow
 ^^^^^^^^^^^^^^^^^^^
 
 .. image:: _static/workflow_titan.png
-  :width: 450
+  :width: 1000
   :align: center
