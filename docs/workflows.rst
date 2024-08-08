@@ -11,6 +11,11 @@ Workflows
 Installation
 ^^^^^^^^^^^^
 
+.. image:: _static/Nextflow_logo.png
+    :width: 49 %
+.. image:: _static/Docker_logo.png
+    :width: 49 %
+
 First, you have to clone the pipeline repository from git:
 
 .. code-block:: bash
