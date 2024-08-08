@@ -57,7 +57,7 @@ In the workflows/genes_annotation-workflow folder, you can create a "data" folde
 
           .. code-block:: bash
   
-            organism,filename,maker_braker2
+            organism,filename,braker2
             arabidopsis,arabidopsis_prot_2022_01.fasta,no
             viridiplantae,Viridiplantae_swissprot.fasta,yes
             eudicotyledones_uniprot,eudicotyledons_uniprot.fasta,no
