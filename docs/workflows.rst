@@ -75,7 +75,7 @@ In the workflows/genes_annotation-workflow folder, you can create a "data" folde
 
           .. code-block:: bash
 
-            sampleID,SRA_or_FASTQ,paired_or_single
+            sampleID,SRA_or_FASTQ,library_layout
             ERR1059552,FASTQ,paired
             ERR1059553,FASTQ,paired
             ERR1059554,SRA,paired
@@ -85,6 +85,9 @@ In the workflows/genes_annotation-workflow folder, you can create a "data" folde
             SRR3046429,SRA,paired
             SRR3046438,SRA,paired
             SRR520373,SRA,single
+            SRR17318658,SRA,long
+
+The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_or_FASTQ can take two possible values, "SRA" and "FASTQ". If the value is SRA, TITAN will donwload the file from public database, else the FASTQ filein .gz format must be in data/RNAseq_data. Then, the library_layout column can take three different values : "single" (if sample si single-end), "paired" (if sample is paired-end) or "long" (if sample is long reads).
 
 .. warning::
 
