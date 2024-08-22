@@ -62,12 +62,9 @@ In the workflows/genes_annotation-workflow folder, you can create a "data" folde
 
           .. code-block:: bash
   
-            organism,filename,braker3
-            arabidopsis,arabidopsis_prot_2022_01.fasta,no
-            viridiplantae,Viridiplantae_swissprot.fasta,yes
-            eudicotyledones_uniprot,eudicotyledons_uniprot.fasta,no
-            eudicotyledones_orthoDB,eudicotyledons_odb10.fasta,yes
-            vitales,vitales.fasta,no
+            organism,filename
+            viridiplantae,Viridiplantae_swissprot.fasta
+            eudicotyledones_orthoDB,eudicotyledons_odb10.fasta
 
 **data/RNAseq_data** : contains all the RNAseq data for transcriptome assembly. Contains also the RNAseq_samplesheet. If FASTQ, the fastq file must be in the right folder, if SRA, the workflow will download the SRA file and convert it to fastq.gz file.
 
