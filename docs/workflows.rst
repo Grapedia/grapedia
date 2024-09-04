@@ -100,10 +100,13 @@ Before launching the pipeline, fill in the configuration file called “nextflow
 .. code-block:: bash
 
   manifest {
-    author = 'Amandine Velt'
-    name = 'Annotation pipeline'
+    author = 'David Navarro (david.navarro.paya@gmail.com), Antonio Santiago (antsanpaj@gmail.com), Amandine Velt (amandine.velt@inrae.fr)'
+    name = 'TITAN (The Intensive Transcript ANnotation pipeline)'
     version = '1.0'
-    description = 'Annotation pipeline'
+    description = 'Gene annotation pipeline'
+    homePage = 'https://github.com/Grapedia/workflows/tree/main/genes_annotation-workflow'
+    nextflowVersion = '24.04.3'
+    mainScript = 'main.nf'
   }
   
   docker {
