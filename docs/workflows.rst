@@ -90,6 +90,10 @@ The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_
 
   In data/RNAseq_data, for the FASTQ files, the name need to be ${sampleID}.fastq.gz for single-end and ${sampleID}_1.fastq.gz and ${sampleID}_2.fastq.gz for paired-end.
 
+.. warning::
+
+  In data/RNAseq_data, short reads are mandatory, and long reads are optional. So, if there is no library_layout as "long" in the RNAseq_samplesheet, this is not a problem.
+
 Launch the pipeline
 ^^^^^^^^^^^^^^^^^^^
 
