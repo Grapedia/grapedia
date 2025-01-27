@@ -92,7 +92,7 @@ The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_
 
 .. warning::
 
-  In data/RNAseq_data, short reads are mandatory, and long reads are optional. So, if there is no library_layout as "long" in the RNAseq_samplesheet, this is not a problem.
+  In data/RNAseq_data, stranded short reads are mandatory, and unstranded short reads and long reads are optional. Also, if there is no library_layout as "long" in the RNAseq_samplesheet, this is not a problem.
 
 Launch the pipeline
 ^^^^^^^^^^^^^^^^^^^
