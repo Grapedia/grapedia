@@ -120,6 +120,7 @@ Before launching the pipeline, fill in the configuration file called “nextflow
   process {
     cpus = 20
     memory = 20.GB
+    containerOptions = "-v /path/to/workflows/genes_annotation-workflow/:/path/to/workflows/genes_annotation-workflow/"
   }
   
   params {
