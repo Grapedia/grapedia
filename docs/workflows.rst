@@ -102,6 +102,7 @@ Before launching the pipeline, fill in the configuration file called “nextflow
   nextflow.config file
 
 .. code-block:: bash
+
   // Manifest section: Defines metadata about the pipeline
   manifest {
     author = 'David Navarro (david.navarro.paya@gmail.com), Antonio Santiago (antsanpaj@gmail.com), Amandine Velt (amandine.velt@inrae.fr)'
