@@ -92,7 +92,7 @@ The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_
 
 .. warning::
 
-  In data/RNAseq_data, stranded short reads are mandatory, and unstranded short reads and long reads are optional. Also, if there is no library_layout as "long" in the RNAseq_samplesheet, this is not a problem.
+  In data/RNAseq_data, stranded short reads are mandatory, and unstranded short reads and long reads are optional. Also, if there is no library_layout as "long" in the RNAseq_samplesheet, this is not a problem. Don't forget to put the right parameters in nextflow.config : use_long_reads = false // true or false
 
 Launch the pipeline
 ^^^^^^^^^^^^^^^^^^^
@@ -129,6 +129,8 @@ Before launching the pipeline, fill in the configuration file called “nextflow
     previous_annotations = "$projectDir/data/annotations/PN40024_pseudomolecules.v4.3.BETA.gff3"
     RNAseq_samplesheet = "$projectDir/data/RNAseq_data/samplesheet.test.csv"
     protein_samplesheet = "$projectDir/data/protein_data/samplesheet.csv"
+    EDTA = "yes" // yes or no
+    use_long_reads = false // true or false
   }
 
 .. note::
