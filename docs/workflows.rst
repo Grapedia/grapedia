@@ -102,46 +102,46 @@ Before launching the pipeline, fill in the configuration file called “nextflow
   nextflow.config file
 
 .. code-block:: bash
-// Manifest section: Defines metadata about the pipeline
-manifest {
-  author = 'David Navarro (david.navarro.paya@gmail.com), Antonio Santiago (antsanpaj@gmail.com), Amandine Velt (amandine.velt@inrae.fr)'
-  name = 'TITAN (The Intensive Transcript ANnotation pipeline)'
-  version = '1.0'
-  description = 'Gene annotation pipeline'
-  homePage = 'https://github.com/Grapedia/workflows/tree/main/genes_annotation-workflow'
-  nextflowVersion = '24.04.3'
-  mainScript = 'main.nf'
-}
-
-// Docker section: Enables containerization using Docker
-docker {
-  enabled = true
-}
-
-// Process settings: Defines resource allocation for processes
-process {
-  cpus = 17
-  memory = 20.GB
-  containerOptions = "-v /data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_final_development_TITAN/workflows/genes_annotation-workflow:/data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_final_development_TITAN/workflows/genes_annotation-workflow"
-}
-
-// Parameters section: Defines user-configurable parameters
-params {
-  previous_assembly = "$projectDir/data/assemblies/T2T_ref.fasta"
-  new_assembly = "$projectDir/data/assemblies/riesling.hap1.chromosomes.phased.fa"
-  previous_annotations = "$projectDir/data/annotations/PN40024_5.1_on_T2T_ref_with_names.gff3"
-  RNAseq_samplesheet = "$projectDir/data/RNAseq_data/RNAseq_samplesheet.txt"
-  protein_samplesheet = "$projectDir/data/protein_data/samplesheet.csv"
-  EDTA = "yes" // Whether to run EDTA (transposable element annotation tool) - "yes" or "no"
-  use_long_reads = false // Flag to indicate whether long-read sequencing data should be used (true/false)
-  logfile = "pipeline_execution.log" // File where pipeline execution logs will be saved
-}
-
-// Logging options: Configures logging behavior
-logOptions {
-    file = params.logfile
-    level = 'INFO'
-}
+  // Manifest section: Defines metadata about the pipeline
+  manifest {
+    author = 'David Navarro (david.navarro.paya@gmail.com), Antonio Santiago (antsanpaj@gmail.com), Amandine Velt (amandine.velt@inrae.fr)'
+    name = 'TITAN (The Intensive Transcript ANnotation pipeline)'
+    version = '1.0'
+    description = 'Gene annotation pipeline'
+    homePage = 'https://github.com/Grapedia/workflows/tree/main/genes_annotation-workflow'
+    nextflowVersion = '24.04.3'
+    mainScript = 'main.nf'
+  }
+  
+  // Docker section: Enables containerization using Docker
+  docker {
+    enabled = true
+  }
+  
+  // Process settings: Defines resource allocation for processes
+  process {
+    cpus = 17
+    memory = 20.GB
+    containerOptions = "-v /data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_final_development_TITAN/workflows/genes_annotation-workflow:/data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_final_development_TITAN/workflows/genes_annotation-workflow"
+  }
+  
+  // Parameters section: Defines user-configurable parameters
+  params {
+    previous_assembly = "$projectDir/data/assemblies/T2T_ref.fasta"
+    new_assembly = "$projectDir/data/assemblies/riesling.hap1.chromosomes.phased.fa"
+    previous_annotations = "$projectDir/data/annotations/PN40024_5.1_on_T2T_ref_with_names.gff3"
+    RNAseq_samplesheet = "$projectDir/data/RNAseq_data/RNAseq_samplesheet.txt"
+    protein_samplesheet = "$projectDir/data/protein_data/samplesheet.csv"
+    EDTA = "yes" // Whether to run EDTA (transposable element annotation tool) - "yes" or "no"
+    use_long_reads = false // Flag to indicate whether long-read sequencing data should be used (true/false)
+    logfile = "pipeline_execution.log" // File where pipeline execution logs will be saved
+  }
+  
+  // Logging options: Configures logging behavior
+  logOptions {
+      file = params.logfile
+      level = 'INFO'
+  }
 .. note::
 
   The $projectDir variable is the absolute path to the "workflows/genes_annotation-workflow" folder. If you have correctly followed the folders/files structure creation that is mandatory and suggested in the data preparation section, you only need to modify the file names and not the paths to these files.
