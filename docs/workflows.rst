@@ -66,6 +66,10 @@ In the workflows/genes_annotation-workflow folder, you can create a "data" folde
             viridiplantae,Viridiplantae_swissprot.fasta
             eudicotyledones_orthoDB,eudicotyledons_odb10.fasta
 
+.. warning::
+
+  This Samplesheet is used by BRAKER3 and Aegis. For Aegis, the order of the lines is important. For example, in this example, viridiplantae will be most important as eudicotyledones_orthoDB. So order the proteins according to their importance here.
+
 **data/RNAseq_data** : contains all the RNAseq data for transcriptome assembly. Contains also the RNAseq_samplesheet. If FASTQ, the fastq file must be in the right folder, if SRA, the workflow will download the SRA file and convert it to fastq.gz file.
 
           Example of RNAseq_samplesheet :
