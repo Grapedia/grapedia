@@ -149,7 +149,7 @@ Once the data has been correctly prepared and the configuration file completed, 
 
 .. code-block:: bash
 
-  nextflow run main.nf
+  nextflow run main.nf -with-dag dag.png -with-trace -with-timeline -with-report
 
 TITAN workflow
 ^^^^^^^^^^^^^^^^^^^
