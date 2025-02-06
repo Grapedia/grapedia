@@ -139,7 +139,6 @@ Before launching the pipeline, fill in the configuration file called “nextflow
     protein_samplesheet = "$projectDir/data/protein_data/samplesheet.csv"
     EDTA = "yes" // Whether to run EDTA (transposable element annotation tool) - "yes" or "no"
     use_long_reads = false // Flag to indicate whether long-read sequencing data should be used (true/false)
-    logfile = "pipeline_execution.log" // File where pipeline execution logs will be saved
   }
 
 .. note::
