@@ -22,7 +22,7 @@ First, you have to clone the pipeline repository from git:
 
   git clone https://github.com/Grapedia/workflows.git
 
-The TITAN annotation pipeline is in the folder workflows/genes_annotation-workflow
+The TITAN annotation pipeline is in the folder workflows/TITAN
 
 .. note::
   Git can be installed from `Git website <https://git-scm.com/downloads>`_ 
@@ -35,7 +35,7 @@ The pipeline only requires docker to be installed. All the tools used by the pip
 
 Also, to launch the pipeline, Nextflow must be installed on your computer/server following these `instructions <https://www.nextflow.io/docs/latest/install.html>`_
 
-With the workflows/genes_annotation-workflow, Nextflow and docker installed, you can simply run the TITAN pipeline after data preparation (see next section).
+With the workflows/TITAN, Nextflow and docker installed, you can simply run the TITAN pipeline after data preparation (see next section).
 
 Data preparation
 ^^^^^^^^^^^^^^^^
@@ -50,7 +50,7 @@ File structure to be prepared :
   │   ├── protein_data
   │   └── RNAseq_data
 
-In the workflows/genes_annotation-workflow folder, you can create a "data" folder containing all the data needed by TITAN to run.
+In the workflows/TITAN folder, you can create a "data" folder containing all the data needed by TITAN to run.
 
 **data/annotations** : contains the previous annotation in GFF3 format (eg : Vitis_vinifera_gene_annotation_on_V2_20.gff3)
 
@@ -101,7 +101,7 @@ The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_
 Launch the pipeline
 ^^^^^^^^^^^^^^^^^^^
 
-Before launching the pipeline, fill in the configuration file called “nextflow.config” in the “workflows/genes_annotation-workflow” folder.
+Before launching the pipeline, fill in the configuration file called “nextflow.config” in the “workflows/TITAN” folder.
 
   nextflow.config file
 
@@ -161,9 +161,9 @@ Before launching the pipeline, fill in the configuration file called “nextflow
 
 .. note::
 
-  The $projectDir variable is the absolute path to the "workflows/genes_annotation-workflow" folder. If you have correctly followed the folders/files structure creation that is mandatory and suggested in the data preparation section, you only need to modify the file names and not the paths to these files.
+  The $projectDir variable is the absolute path to the "workflows/TITAN folder. If you have correctly followed the folders/files structure creation that is mandatory and suggested in the data preparation section, you only need to modify the file names and not the paths to these files.
 
-Once the data has been correctly prepared and the configuration file completed, simply launch the Nextflow pipeline directly in the workflows/genes_annotation-workflow folder.
+Once the data has been correctly prepared and the configuration file completed, simply launch the Nextflow pipeline directly in the workflows/TITAN folder.
 
 .. code-block:: bash
 
