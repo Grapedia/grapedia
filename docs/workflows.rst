@@ -126,7 +126,7 @@ In the workflows/TITAN folder, you can create a "data" folder containing all the
 
   This Samplesheet is used by BRAKER3 and Aegis. For Aegis, the order of the lines is important. For example, in this example, viridiplantae will be most important as eudicotyledones_orthoDB. So order the proteins according to their importance here.
 
-**data/RNAseq_data** : contains all the RNAseq data for transcriptome assembly. Contains also the RNAseq_samplesheet. If FASTQ, the fastq file must be in the right folder, if SRA, the workflow will download the SRA file and convert it to fastq.gz file.
+**data/RNAseq_data** : contains all the RNAseq data for transcriptome assembly. Contains also the RNAseq_samplesheet. If data is a FASTQ file, the fastq file must be in the right folder, if SRA, the workflow will download the SRA file and convert it to fastq.gz file.
 
           Example of RNAseq_samplesheet :
 
@@ -181,43 +181,60 @@ Before launching the pipeline, fill in the configuration file called “nextflow
   
   // Process settings: Defines resource allocation for processes
   process {
-    withName: 'aegis_short_reads' {
-      memory = '300GB'
-      cpus = 1
-      containerOptions = "-v /data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_genes_annotation/workflows/TITAN:/data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_genes_annotation/workflows/TITAN"
-    }
-  
-    withName: 'aegis_long_reads' {
-      memory = '300GB'
-      cpus = 1
-      containerOptions = "-v /data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_genes_annotation/workflows/TITAN:/data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_genes_annotation/workflows/TITAN"
-    }
-  
     // Default configuration for all other processes
     withLabel: 'default' {
-      memory = '40GB'
+      memory = '100GB'
       cpus = 10
-      containerOptions = "-v /data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_genes_annotation/workflows/TITAN:/data2/avelt/2024_assembly_GW_RI_hifiasm/Riesling/2025_genes_annotation/workflows/TITAN"
     }
   
   }
   
   // Parameters section: Defines user-configurable parameters
   params {
-    workflow = "generate_evidence_data" // possible value : generate_evidence_data, aegis or all
+    workflow = "aegis" // possible value : generate_evidence_data, aegis or all
     output_dir = "$projectDir/OUTDIR"
-    previous_assembly = "$projectDir/data/assemblies/T2T_ref.fasta"
-    new_assembly = "$projectDir/data/assemblies/riesling.hap1.chromosomes.phased.fa"
-    previous_annotations = "$projectDir/data/annotations/PN40024_5.1_on_T2T_ref_with_names.gff3"
+    previous_assembly = "$projectDir/data/assemblies/v4_genome_ref.fasta"
+    new_assembly = "$projectDir/data/assemblies/riesling.hap2.chromosomes.phased.fa"
+    previous_annotations = "$projectDir/data/annotations/v4_3_just_ref.gff3"
     RNAseq_samplesheet = "$projectDir/data/RNAseq_data/RNAseq_samplesheet.txt"
     protein_samplesheet = "$projectDir/data/protein_data/samplesheet.csv"
     EDTA = "yes" // Whether to run EDTA (transposable element annotation tool) - "yes" or "no"
-    use_long_reads = false // Flag to indicate whether long-read sequencing data should be used (true/false)
+    use_long_reads = true // Flag to indicate whether long-read sequencing data should be used (true/false)
+    // PsiClass options to decrease the monoexon genes number
+    PSICLASS_vd_option = 5.0 // FLOAT : the minimum average coverage depth of a transcript to be reported
+    PSICLASS_c_option = 0.03 // FLOAT: only use the subexons with classifier score <= than the given number
+    STAR_memory_per_job = 60000000000 // if the depth of your RNAseq samples is high, TITAN may crash with an out of memory error, using the STAR alignment tool. You can increase the memory here, it's in bytes, for example 60000000000 is about 55Gb per sample.
+    egapx_paramfile="$projectDir/data/input_egapx.yaml"
+  }
   }
 
 .. note::
 
-  The $projectDir variable is the absolute path to the "workflows/TITAN folder. If you have correctly followed the folders/files structure creation that is mandatory and suggested in the data preparation section, you only need to modify the file names and not the paths to these files.
+The $projectDir variable is the absolute path to the "workflows/TITAN folder. If you have correctly followed the folders/files structure creation that is mandatory and suggested in the data preparation section, you only need to modify the file names and not the paths to these files.
+
+**Notes about supplementary options :**
+
+**PSICLASS_vd_option** = 5.0 // FLOAT : the minimum average coverage depth of a transcript to be reported - to test to reduce false mono exons genes
+
+**PSICLASS_c_option** = 0.03 // FLOAT: only use the subexons with classifier score <= than the given number - to test to reduce false mono exons genes
+
+**STAR_memory_per_job** : For STAR alignment process. If the depth of your RNAseq samples is high, TITAN may crash with an out of memory error, during the STAR alignment step. You can increase the memory here, it's in bytes, for example 60000000000 is about 55Gb per sample/job. default: "60000000000" 
+
+**egapx_paramfile** : a file containing the parameters for egapx NCBI pipeline.
+
+Minimal example of **egapx_paramfile** :
+
+.. code-block:: bash
+
+  genome: /path/to/TITAN/data/assemblies/genome_assembly.fa
+  taxid: 29760
+  reads:
+    - /path/to/TITAN/data/RNAseq_data/sample1_1.fastq.gz
+    - /path/to/TITAN/data/RNAseq_data/sample1_2.fastq.gz
+    - /path/to/TITAN/data/TITAN/data/RNAseq_data/sample2.fastq.gz
+  annotation_provider: egapx_ncbi
+  annotation_name_prefix: Assembly
+  locus_tag_prefix: EGAPX
 
 Once the data has been correctly prepared and the configuration file completed, simply launch the Nextflow pipeline directly in the workflows/TITAN folder.
 
