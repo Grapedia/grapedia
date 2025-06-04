@@ -261,6 +261,8 @@ Once the data has been correctly prepared and the configuration file completed, 
 TITAN workflow
 ^^^^^^^^^^^^^^^^^^^
 
-.. image:: _static/workflow_titan.png
+.. image:: _static/TITAN_diagram.jpg
   :width: 1000
   :align: center
+
+
