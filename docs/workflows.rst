@@ -8,6 +8,62 @@ Workflows
   :width: 450
   :align: center
 
+A **Nextflow** and **Docker** based pipeline for full genome annotation, starting from raw RNA-seq Illumina/Iso-Seq data, reference protein data and reference genome assembly/gene annotation to annotate a new genome assembly.
+
+Overview
+--------
+
+This pipeline requires only **Nextflow** and **Docker**, ensuring reproducibility and ease of use.  
+It takes as input:
+
+- Raw RNA-seq data (Illumina and optionnal PacBio Iso-Seq) in `.fastq.gz` format
+- A reference protein set (`.fasta`)
+- A reference genome assembly and its gene annotation (`.fasta` + `.gff3`)
+- A new genome assembly to be annotated
+
+It outputs:
+
+- A final high-confidence gene annotation (`.gff3`) for the new genome
+- A masked version of the new genome (`.fasta`)
+- Functional annotations for the predicted genes (GO terms)
+
+Pipeline Steps
+--------------
+
+1. **Transcriptome Reconstruction**
+
+   - `StringTie` and `PsiClass`: build transcript models from RNA-seq alignments  
+   - `BRAKER3`: combines ab initio prediction with RNAseq/protein evidence
+
+2. **Annotation Projection**
+
+   - `Liftoff`: lifts gene annotations from the reference genome to the new assembly
+
+3. **Reference-based Structural Annotation**
+
+   - NCBI's `EGAPX`: generates structural annotations using transcript and protein data
+
+4. **Repeat Masking**
+
+   - `EDTA`: identifies and soft-masks repetitive elements in the genome
+
+5. **Annotation Merging & Filtering**
+
+   - `AEGIS`: merges annotations (BRAKER3, EGAPX, Liftoff, transcriptomes (Stringtie/PsiClass), proteins)  
+   - Applies quality filters and produces a unified `.gff3` annotation
+
+6. **Functional Annotation**
+
+   - `Diamond2GO`: annotates predicted proteins with Gene Ontology (GO) terms
+
+Key Features
+------------
+
+- Fully portable and containerized with Docker
+- Uses trusted community tools
+- Accepts both short-read and long-read RNA-seq data
+- Enables de novo genome annotation guided by a reference genome
+
 Installation
 ^^^^^^^^^^^^
 
