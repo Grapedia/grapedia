@@ -11,7 +11,7 @@ Workflows
 A **Nextflow** and **Docker** based pipeline for full genome annotation, starting from raw RNA-seq Illumina/Iso-Seq data, reference protein data and reference genome assembly/gene annotation to annotate a new genome assembly.
 
 Overview
---------
+^^^^^^^^^^^^
 
 This pipeline requires only **Nextflow** and **Docker**, ensuring reproducibility and ease of use.  
 It takes as input:
@@ -28,7 +28,7 @@ It outputs:
 - Functional annotations for the predicted genes (GO terms)
 
 Pipeline Steps
---------------
+^^^^^^^^^^^^
 
 1. **Transcriptome Reconstruction**
 
@@ -57,7 +57,7 @@ Pipeline Steps
    - `Diamond2GO`: annotates predicted proteins with Gene Ontology (GO) terms
 
 Key Features
-------------
+^^^^^^^^^^^^
 
 - Fully portable and containerized with Docker
 - Uses trusted community tools
