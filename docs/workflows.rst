@@ -39,7 +39,7 @@ Pipeline Steps
 
    - `Liftoff`: lifts gene annotations from the reference genome to the new assembly
 
-3. **Reference-based Structural Annotation**
+3. **Automatic Structural Annotation**
 
    - NCBI's `EGAPX`: generates structural annotations using transcript and protein data
 
