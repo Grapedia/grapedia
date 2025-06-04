@@ -236,11 +236,27 @@ Minimal example of **egapx_paramfile** :
   annotation_name_prefix: Assembly
   locus_tag_prefix: EGAPX
 
-Once the data has been correctly prepared and the configuration file completed, simply launch the Nextflow pipeline directly in the workflows/TITAN folder.
+Once the data has been correctly prepared and the configuration file completed, simply launch the Nextflow pipeline directly in the workflows/TITAN folder. Here is an example of bash script to launch on your server.
 
 .. code-block:: bash
 
-  nextflow run main.nf -with-dag dag.png -with-trace -with-timeline -with-report
+  #!/usr/bin/env bash
+  # Exit immediately if a command exits with a non-zero status
+  # Ensures AEGIS doesn't run if generate_evidence_data fails
+  set -e
+  # Navigate to the project workflow directory
+  cd /path/to/workflows/TITAN
+  # Load required Nextflow module or use "export PATH"
+  module load nextflow/24.04.3
+  # Run the 'generate_evidence_data' workflow and generate its DAG
+  nextflow run main.nf \
+   -with-dag dag_evidence_data.png \
+   --workflow generate_evidence_data -resume
+  # Run the 'aegis' workflow and generate its DAG
+  nextflow run main.nf \
+    -with-dag dag_aegis.png \
+    --workflow aegis -resume
+
 
 TITAN workflow
 ^^^^^^^^^^^^^^^^^^^
