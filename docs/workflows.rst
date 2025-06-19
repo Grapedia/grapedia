@@ -177,6 +177,10 @@ The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_
 
   Important: The path to your “data” folder must be /mnt/project/, the mount point used. Don't worry about this, just change the name of the RNAseq fastq files in the configuration file.
 
+.. warning::
+
+  Info: This analysis is optional; you can set the egapx parameter to “no” in nextflow.config, and it will be ignored. This job requires at least 16 CPUs and 200 GB of RAM.
+
 Launch the pipeline
 ^^^^^^^^^^^^^^^^^^^
 
@@ -209,7 +213,10 @@ Before launching the pipeline, fill in the configuration file called “nextflow
       memory = '100GB'
       cpus = 10
     }
-  
+    withName: egapx {
+      cpus = 20 // the minimum CPU number is 16 to use egapx !
+      memory = '300GB' // egapx requires 200Gb of RAM as a minimum
+    }
   }
   
   // Parameters section: Defines user-configurable parameters
@@ -221,13 +228,13 @@ Before launching the pipeline, fill in the configuration file called “nextflow
     previous_annotations = "$projectDir/data/annotations/v4_3_just_ref.gff3"
     RNAseq_samplesheet = "$projectDir/data/RNAseq_data/RNAseq_samplesheet.txt"
     protein_samplesheet = "$projectDir/data/protein_data/samplesheet.csv"
-    EDTA = "yes" // Whether to run EDTA (transposable element annotation tool) - "yes" or "no"
     use_long_reads = true // Flag to indicate whether long-read sequencing data should be used (true/false)
     // PsiClass options to decrease the monoexon genes number
     PSICLASS_vd_option = 5.0 // FLOAT : the minimum average coverage depth of a transcript to be reported
     PSICLASS_c_option = 0.03 // FLOAT: only use the subexons with classifier score <= than the given number
     STAR_memory_per_job = 60000000000 // if the depth of your RNAseq samples is high, TITAN may crash with an out of memory error, using the STAR alignment tool. You can increase the memory here, it's in bytes, for example 60000000000 is about 55Gb per sample.
     egapx_paramfile="$projectDir/data/input_egapx.yaml"
+    egapx = "yes" // Whether to run egapx NCBI (gene annotation pipeline NCBI tool) - "yes" or "no"
   }
   }
 
