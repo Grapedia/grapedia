@@ -154,6 +154,29 @@ The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_
 
   In data/RNAseq_data, stranded short reads are mandatory, and unstranded short reads and long reads are optional. Also, if there is no library_layout as "long" in the RNAseq_samplesheet, this is not a problem. Don't forget to put the right parameters in nextflow.config : use_long_reads = false // true or false
 
+**data/input_egapx.yaml** : The egapx parameter file, required if the egapx option is set to “yes”
+
+          .. code-block:: bash
+
+          genome: /mnt/project/data/assemblies/riesling.hap2.chromosomes.phased.fa
+          taxid: 29760
+          reads:
+            - /mnt/project/data/RNAseq_data/RCDN23_S1_1.fastq.gz
+            - /mnt/project/data/RNAseq_data/RCDN23_S1_2.fastq.gz
+            - /mnt/project/data/RNAseq_data/KXXF10_1.fastq.gz
+            - /mnt/project/data/RNAseq_data/KXXF10_2.fastq.gz
+          annotation_provider: egapx_ncbi
+          annotation_name_prefix: Assembly
+          locus_tag_prefix: EGAPX
+
+.. warning::
+
+  Important: the "taxid" parameter must be that of your organism as referenced in NCBI. This allows the best reference data for your specific organism to be used automatically. Search it here : https://www.ncbi.nlm.nih.gov/taxonomy
+
+.. warning::
+
+  Important: The path to your “data” folder must be /mnt/project/, the mount point used. Don't worry about this, just change the name of the RNAseq fastq files in the configuration file.
+
 Launch the pipeline
 ^^^^^^^^^^^^^^^^^^^
 
