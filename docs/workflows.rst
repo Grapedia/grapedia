@@ -156,18 +156,20 @@ The sampleID correspond to the SRR ID for SRA or the file ID for FASTQ. The SRA_
 
 **data/input_egapx.yaml** : The egapx parameter file, required if the egapx option is set to “yes”
 
-          .. code-block:: bash
+```rst
 
-          genome: /mnt/project/data/assemblies/riesling.hap2.chromosomes.phased.fa
-          taxid: 29760
-          reads:
-            - /mnt/project/data/RNAseq_data/RCDN23_S1_1.fastq.gz
-            - /mnt/project/data/RNAseq_data/RCDN23_S1_2.fastq.gz
-            - /mnt/project/data/RNAseq_data/KXXF10_1.fastq.gz
-            - /mnt/project/data/RNAseq_data/KXXF10_2.fastq.gz
-          annotation_provider: egapx_ncbi
-          annotation_name_prefix: Assembly
-          locus_tag_prefix: EGAPX
+.. code-block:: bash
+
+    genome: /mnt/project/data/assemblies/riesling.hap2.chromosomes.phased.fa
+    taxid: 29760
+    reads:
+    - /mnt/project/data/RNAseq_data/RCDN23_S1_1.fastq.gz
+    - /mnt/project/data/RNAseq_data/RCDN23_S1_2.fastq.gz
+    - /mnt/project/data/RNAseq_data/KXXF10_1.fastq.gz
+    - /mnt/project/data/RNAseq_data/KXXF10_2.fastq.gz
+    annotation_provider: egapx_ncbi
+    annotation_name_prefix: Assembly
+    locus_tag_prefix: EGAPX
 
 .. warning::
 
